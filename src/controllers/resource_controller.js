@@ -61,9 +61,10 @@ class ResourceController {
 
     //SAVE OR CREATE
     async store(req, res, next) {
+
         try {
             const entity = await this.model.create(req.body);
-            return successResponse(res, 200, `Nova entidade incluida com sucesso em ${this.model.getTableName() }`, entity)
+            return successResponse(res, 200, `Nova entidade incluida com sucesso em ${this.model.getTableName()}`, entity)
 
         } catch (error) {
             if (error.name && error.name.includes('SequelizeValidation')) {
@@ -89,10 +90,10 @@ class ResourceController {
             const entityNew = await entityOld.update(req.body);
 
             if (req.body.state === 0) {
-                return successResponse(res, 200, `Entidade Eliminada com sucesso em ${this.model.getTableName() }`, entityNew)
+                return successResponse(res, 200, `Entidade Eliminada com sucesso em ${this.model.getTableName()}`, entityNew)
 
             } else {
-                return successResponse(res, 200, `Entidade autalizada com sucesso em ${this.model.getTableName() }`, entityNew)
+                return successResponse(res, 200, `Entidade autalizada com sucesso em ${this.model.getTableName()}`, entityNew)
 
             }
         } catch (error) {
@@ -100,7 +101,7 @@ class ResourceController {
                 return invalidResponse(res, 400, `Dados informados sao invalidos `, error)
 
             }
-            return errorResponse(res, 500, `Não foi possivel atualizar ${this.model.getTableName() }`, error)
+            return errorResponse(res, 500, `Não foi possivel atualizar ${this.model.getTableName()}`, error)
 
 
         }
@@ -116,7 +117,7 @@ class ResourceController {
                 return errorResponse(res, 404, 'Não foi possivel recuperar entidade pelo id', error)
             }
             entity.destroy();
-            return successResponse(res, 200, `Entidade removida com sucesso em ${this.model.getTableName() }`, null)
+            return successResponse(res, 200, `Entidade removida com sucesso em ${this.model.getTableName()}`, null)
         } catch (error) {
             return errorResponse(res, 500, 'Erro servidor', error)
 
