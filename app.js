@@ -1,4 +1,5 @@
 var express = require('express');
+var axiso =require('axiso');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -7,7 +8,7 @@ var indexRouter = require('./src/routes/index');
 
 
 var app = express();
-
+app.use(axios);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
