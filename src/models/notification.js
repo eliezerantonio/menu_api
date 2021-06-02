@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
 
       let where = {}
 
-      if (query.name) where.name = {
-        [Op.like]: `%${query.name}%` //filtrando pelo nome
+      if (query.ticket) where.ticket = {
+        [Op.like]: `%${query.ticket}%` //filtrando pelo nome
 
       }
 
