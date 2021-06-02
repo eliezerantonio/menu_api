@@ -63,7 +63,7 @@ class ResourceController {
     async store(req, res, next) {
 
         try {
-            const entity = await this.model.create(req.body);
+            const entity = await this.model.create({ code: req.params.code, ticket: req.params.ticket});
             return successResponse(res, 200, `Nova entidade incluida com sucesso em ${this.model.getTableName()}`, entity)
 
         } catch (error) {

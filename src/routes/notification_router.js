@@ -7,7 +7,7 @@ const NotificationController = require('../controllers/notification_controller')
 //show
 router.get("/", NotificationController.bindMethod("index"));
 //Store
-router.post('/', NotificationController.bindMethod('store'));
+router.post('/:ticket/:code', NotificationController.bindMethod('store'));
 //Update
 router.patch('/:id', NotificationController.bindMethod('update'));
 //Delete
