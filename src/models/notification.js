@@ -12,6 +12,44 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+    static async search(query) {
+
+      const limit = query.limit ? parseInt(query.limit) : 20;
+      const offset = query.offset ? parseInt(query.limit) : 0
+
+      let where = {}
+
+      if (query.name) where.name = {
+        [Op.like]: `%${query.name}%` //filtrando pelo nome
+
+      }
+
+
+      const entities = await Notification.findAndCountAll({
+        where: {
+          state: {
+            [Op.like]: 1
+          }
+        },
+        limit: limit,
+        offset: offset
+      })
+
+      return {
+        entities: entities.rows,
+        meta: {
+          count: entities.count,
+          limit: limit,
+          offset: offset
+        }
+      };
+    }
+
+    static async getId(id) {
+      return await Account.findByPk(id, {
+
+      })
+    }
   };
   Notification.init({
     ticket: DataTypes.INTEGER,
