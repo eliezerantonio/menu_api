@@ -1,7 +1,7 @@
 const express = require('express');
 var router = express.Router();
 
-const NotificationController = require('./notification_controller');
+const NotificationController = require('../controllers/notification_controller');
 
 
 //show
@@ -12,3 +12,6 @@ router.post('/', NotificationController.bindMethod('store'));
 router.patch('/:id', NotificationController.bindMethod('update'));
 //Delete
 router.delete('/:id', NotificationController.bindMethod('remove'));
+
+
+module.exports = router;
