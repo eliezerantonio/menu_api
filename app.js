@@ -17,6 +17,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/api.evoluyr/noficication', notificationRouter)
+app.use('/evoluyr/notification', notificationRouter)
 
 module.exports = app;
